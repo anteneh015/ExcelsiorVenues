@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.techelevator.projects.model.Project;
 import com.techelevator.projects.model.ProjectDAO;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 public class JDBCProjectDAO implements ProjectDAO {
 
@@ -20,7 +21,30 @@ public class JDBCProjectDAO implements ProjectDAO {
 	
 	@Override
 	public List<Project> getAllActiveProjects() {
-		return new ArrayList<>();
+		String sqlGetAllProjects = "SELECT * FROM project";
+		List<Project> projects = new ArrayList<Project>();
+
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllProjects);
+
+		while (results.next()){
+			projects.add(mapRowToProject(results));
+		}
+		return projects;
+	}
+
+	private Project mapRowToProject(SqlRowSet row){
+		Project project = new Project();
+
+		project.setId(row.getLong("project_id"));
+		project.setName(row.getString("name"));
+
+		if (row.getDate("from_date") != null) {
+			project.setStartDate(row.getDate("from_date").toLocalDate());
+		}
+		if (row.getDate("to_date") != null) {
+			project.setStartDate(row.getDate("to_date").toLocalDate());
+		}
+		return project;
 	}
 
 	@Override

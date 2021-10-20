@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.techelevator.projects.model.Employee;
 import com.techelevator.projects.model.EmployeeDAO;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 public class JDBCEmployeeDAO implements EmployeeDAO {
 
@@ -20,7 +21,30 @@ public class JDBCEmployeeDAO implements EmployeeDAO {
 	
 	@Override
 	public List<Employee> getAllEmployees() {
-		return new ArrayList<>();
+		String sqlGetAllEmployees = "SELECT * FROM employee";
+		List<Employee> employees = new ArrayList<Employee>();
+
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllEmployees);
+
+		while(results.next()){
+			employees.add(mapRowToEmployee(results));
+
+		}
+
+		return employees;
+	}
+
+	private Employee mapRowToEmployee(SqlRowSet row){
+		Employee employee = new Employee();
+
+		employee.setId(row.getLong("employee_id"));
+		employee.setDepartmentId(row.getLong("department_id"));
+		employee.setFirstName(row.getString("first_name"));
+		employee.setLastName(row.getString("last_name"));
+		employee.setBirthDay(row.getDate("birth_date").toLocalDate());
+		employee.setHireDate(row.getDate("hire_date").toLocalDate());
+
+	return employee;
 	}
 
 	@Override

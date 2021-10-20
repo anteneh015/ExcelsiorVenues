@@ -1,5 +1,8 @@
 package com.techelevator.projects.model;
 
+import org.springframework.jdbc.support.rowset.SqlRowSet;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public interface EmployeeDAO {
@@ -9,7 +12,11 @@ public interface EmployeeDAO {
 	 * 
 	 * @return all the employees as Employee objects in a List
 	 */	
-	public List<Employee> getAllEmployees();
+
+	public  List<Employee> getAllEmployees();
+	String sqlGetAllDept = "SELECT * FROM department";
+	List<Department> departments = new ArrayList<Department>();
+
 
 	/**
 	 * Find all employees whose names match the search strings. Names should
