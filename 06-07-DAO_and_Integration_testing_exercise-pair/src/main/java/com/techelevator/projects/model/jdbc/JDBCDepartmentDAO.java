@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.techelevator.projects.model.Department;
 import com.techelevator.projects.model.DepartmentDAO;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 public class JDBCDepartmentDAO implements DepartmentDAO {
 	
@@ -20,7 +21,24 @@ public class JDBCDepartmentDAO implements DepartmentDAO {
 
 	@Override
 	public List<Department> getAllDepartments() {
-		return new ArrayList<>();
+		String sqlGetAllDept = "SELECT * FROM department";
+		List<Department> departments = new ArrayList<Department>();
+
+
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllDept);
+
+		while(results.next()){
+			departments.add(mapRowToDepartment(results));
+		}
+		return departments;
+	}
+
+	private Department mapRowToDepartment(SqlRowSet row){
+		Department department = new Department();
+
+		department.setId(row.getLong("department_id"));
+		department.setName(row.getString("name"));
+	return department;
 	}
 
 	@Override
