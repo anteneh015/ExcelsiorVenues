@@ -41,6 +41,8 @@ INSERT INTO department (name) VALUES ('Network Administration');
 INSERT INTO department (name) VALUES ('Research and Development');
 INSERT INTO department (name) VALUES ('Store Support');
 
+
+
 INSERT INTO project (name, from_date, to_date) VALUES ('Project X', '1961-03-01', '2002-08-31');
 INSERT INTO project (name) VALUES ('Forlorn Cupcake');
 INSERT INTO project (name, from_date) VALUES ('The Never-ending Project', '2010-09-01');
@@ -88,4 +90,16 @@ INSERT INTO project_employee (project_id, employee_id) VALUES (6, 11);
 
 
 SELECT * FROM department;
+INSERT INTO department (department_id, name)
+VALUES (DEFAULT, ?) RETURNING department_id;
+
+UPDATE department
+SET name = ? WHERE department_id = ?;
+
+SELECT department_id, name FROM department WHERE department_id = ?;
+
+SELECT employee_id, department_id, first_name, last_name, birth_date, hire_date FROM employee WHERE firstName, lastName ILIKE ?;
+
+
+--DELETE FROM department WHERE department_id = 6;
 COMMIT;
