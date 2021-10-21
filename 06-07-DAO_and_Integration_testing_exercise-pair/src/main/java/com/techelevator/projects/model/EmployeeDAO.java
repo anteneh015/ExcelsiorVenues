@@ -15,7 +15,7 @@ public interface EmployeeDAO {
 
 	public  List<Employee> getAllEmployees();
 	String sqlGetAllDept = "SELECT * FROM department";
-	List<Department> departments = new ArrayList<Department>();
+	List<Department> employees = new ArrayList<Department>();
 
 
 	/**

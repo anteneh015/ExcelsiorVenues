@@ -49,12 +49,12 @@ public class JDBCProjectDAO implements ProjectDAO {
 
 	@Override
 	public void removeEmployeeFromProject(Long projectId, Long employeeId) {
-		
+
 	}
 
 	@Override
 	public void addEmployeeToProject(Long projectId, Long employeeId) {
-		
+
 	}
 
 }
