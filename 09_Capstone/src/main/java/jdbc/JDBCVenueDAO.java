@@ -36,8 +36,8 @@ public class JDBCVenueDAO implements VenueDAO {
 
         venue.setId(row.getLong("id"));
         venue.setName(row.getString("name"));
-        venue.setId(row.getLong("city_id"));
-        venue.setName(row.getString("description"));
+        venue.setCity_id(row.getLong("city_id"));
+        venue.setDescription(row.getString("description"));
         return venue;
     }
 }
