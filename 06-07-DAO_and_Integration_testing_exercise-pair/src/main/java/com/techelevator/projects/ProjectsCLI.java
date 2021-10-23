@@ -139,12 +139,12 @@ public class ProjectsCLI {
 			System.out.println("\n*** No results ***");
 		}
 	}
-
 	private void handleListAllDepartments() {
 		printHeading("All Departments");
 		List<Department> allDepartments = departmentDAO.getAllDepartments();
 		listDepartments(allDepartments);
 	}
+
 
 	private void handleDepartmentSearch() {
 		printHeading("Department Search");

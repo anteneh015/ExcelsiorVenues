@@ -17,7 +17,7 @@ public class ExcelsiorCLI {
 	private VenueDAO venueDAO;
 	//private ReservationDAO reservationDAO;
 	private BasicDataSource dataSource;
-
+//	private VenueMenu venueMenu;
 
 
 	public static void main(String[] args) {
@@ -39,7 +39,6 @@ public class ExcelsiorCLI {
 
 	public void run() {
 
-
 		while(true){
 			String userMainMenuSelection = menu.showMainMenu();
 
@@ -52,6 +51,15 @@ public class ExcelsiorCLI {
 			}else if (userMainMenuSelection.equalsIgnoreCase("Q")){
 				System.exit(0);
 			}break;
+		}
+
+		while(true) {
+			String userVenueMenuSelection = menu.showVenueMenu();
+
+
+			if (userVenueMenuSelection.equalsIgnoreCase("1")) {
+				System.out.println();
+			}
 		}
 	}
 
@@ -81,6 +89,7 @@ public class ExcelsiorCLI {
 			System.out.println("\n*** No result ***");
 		}
 	}
+
 
 
 }

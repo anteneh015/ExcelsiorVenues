@@ -3,5 +3,7 @@ package model;
 import java.util.List;
 
 public interface VenueDAO {
-    public List<Venue> getAllVenues();
+    List<Venue> getAllVenues();
+    List<Venue> getVenueByCityId(long id);
+    List<Venue> getVenueWithCityName();
 }

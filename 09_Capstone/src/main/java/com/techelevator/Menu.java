@@ -13,4 +13,12 @@ public class Menu {
         return in.nextLine();
     }
 
+    public String showVenueMenu(){
+        System.out.println("What would you like to do?");
+        System.out.println("(1) View Spaces ");
+        System.out.println("(2) Search For Reservations ");
+        System.out.println("(R) Return to Previous Screen");
+
+        return in.nextLine();
+    }
 }
