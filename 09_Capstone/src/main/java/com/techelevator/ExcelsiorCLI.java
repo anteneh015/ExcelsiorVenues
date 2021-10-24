@@ -1,17 +1,11 @@
 package com.techelevator;
 
-import javax.sound.midi.Soundbank;
-import javax.sql.DataSource;
-
 import jdbc.JDBCVenueDAO;
 //import model.Reservation;
-import model.ReservationDAO;
 import model.Venue;
 import model.VenueDAO;
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
 public class ExcelsiorCLI {
