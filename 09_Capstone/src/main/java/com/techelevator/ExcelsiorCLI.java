@@ -59,12 +59,17 @@ public class ExcelsiorCLI {
 			}break;
 		}
 
+
 		while(true) {
 			String userVenueMenuSelection = menu.showVenueMenu();
 
 
 			if (userVenueMenuSelection.equalsIgnoreCase("1")) {
 				System.out.println();
+			}else if(userVenueMenuSelection.equalsIgnoreCase("2")) {
+				System.out.println();
+			}else if(userVenueMenuSelection.equalsIgnoreCase("R")){
+				handleListAllVenues(); //TODO fix code
 			}
 		}
 	}
@@ -79,11 +84,14 @@ public class ExcelsiorCLI {
 	private void handleVenueDetails(String selectVenue) {
 		Venue venue = venueDAO.getVenueDetail(selectVenue);
 		System.out.println(venue.getName());
-		System.out.println(venue.getDescription());
-		System.out.println(venue.getCity_name());
+		System.out.printf("Location: " + venue.getCity_name() + ", ");
 		System.out.println(venue.getState_abbreviation());
+		System.out.println("Categories: " + venue.getCategoryName().substring(0,venue.getCategoryName().length()-2));
+		System.out.println();
+		System.out.println(venue.getDescription());
 
-		System.out.println(venue.getCategoryName().substring(0,venue.getCategoryName().length()-2));
+
+
 	}
 //	private void handleListAllReservation() {
 //		printHeading("All Reservations");
