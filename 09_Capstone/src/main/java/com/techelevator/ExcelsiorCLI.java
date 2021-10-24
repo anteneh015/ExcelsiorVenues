@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import javax.sound.midi.Soundbank;
 import javax.sql.DataSource;
 
 import jdbc.JDBCVenueDAO;
@@ -10,6 +11,7 @@ import model.VenueDAO;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 public class ExcelsiorCLI {
@@ -47,7 +49,11 @@ public class ExcelsiorCLI {
 				handleListAllVenues();
 				System.out.println("R) Return to previous Screen");
 				System.out.println();
+				String selectVenue = menu.showViewVenue();
+				handleVenueDetails(selectVenue);
 				System.out.println();
+				System.out.println();
+
 			}else if (userMainMenuSelection.equalsIgnoreCase("Q")){
 				System.exit(0);
 			}break;
@@ -66,17 +72,25 @@ public class ExcelsiorCLI {
 
 
 	private void handleListAllVenues() {
-		printHeading();
 		List<Venue> allVenues = venueDAO.getAllVenues();
 		listVenues(allVenues);
+	}
+
+	private void handleVenueDetails(String selectVenue) {
+		Venue venue = venueDAO.getVenueDetail(selectVenue);
+		System.out.println(venue.getName());
+		System.out.println(venue.getDescription());
+		System.out.println(venue.getCity_name());
+		System.out.println(venue.getState_abbreviation());
+
+		System.out.println(venue.getCategoryName().substring(0,venue.getCategoryName().length()-2));
 	}
 //	private void handleListAllReservation() {
 //		printHeading("All Reservations");
 //		List<Reservation> allReservations = reservationDAO.getAllReservations();
 //		listReservations(allReservations);
 //	}
-	private void printHeading() {
-	}
+
 
 	private void listVenues(List<Venue> venues) {
 		System.out.println();

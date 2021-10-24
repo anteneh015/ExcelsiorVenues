@@ -336,4 +336,15 @@ ALTER SEQUENCE reservation_reservation_id_seq RESTART 1000;
 ALTER SEQUENCE space_id_seq RESTART 1000;
 ALTER SEQUENCE venue_id_seq RESTART 1000;
 
+--SELECT city.name, city_id FROM venue JOIN city ON city_id = city.id;
+SELECT * FROM venue JOIN city ON city_id = city.id JOIN category_venue ON venue.id = venue_id JOIN category ON category.id = category_id;
+--SELECT venue.id, venue.name, city_id, venue.description FROM venue RIGHT JOIN city ON city_id = city.id;
+SELECT category.id, category.name, venue.id FROM category JOIN category_venue ON id = category_id JOIN venue ON venue.id = venue_id; --WHERE venue_id  = venue.id;
+SELECT venue.id, venue.name, description, city.id AS city_id, city.name AS city_name, state_abbreviation FROM venue JOIN city ON city.id = city_id ORDER BY venue.id ASC;
+
+ELECT category.id, category.name, venue.id FROM category JOIN category_venue ON id = category_id JOIN venue ON venue.id = venue_id;
+
+SELECT * FROM venue;
+
+
 COMMIT;

@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface VenueDAO {
     List<Venue> getAllVenues();
-    List<Venue> getVenueByCityId(long id);
-    List<Venue> getVenueWithCityName();
+    Venue getVenueDetail(String selectVenue);
+    //Venue getVenueByCityId(long id);
+   // List<Venue> getVenueWithCityName();
 }
